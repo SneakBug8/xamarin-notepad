@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Notepad.Views.NoteEditView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:Notepad.ViewModels"
+    Title="{Binding Model.Name}">
+
+    <ContentPage.BindingContext>
+        <viewmodels:NoteEditViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Sauvegarder" Command="{Binding SaveCommand}">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                    FontFamily="FA-R"
+                    Glyph="&#xf058;"
+                    Color="{StaticResource TextColor}" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem
+            Order="Secondary"
+            Text="Supprimer"
+            Command="{Binding DeleteCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <Editor
+            Placeholder="Entrez votre note"
+            Text="{Binding Model.Content, Mode=TwoWay}"
+            VerticalOptions="FillAndExpand" />
+    </StackLayout>
+</ContentPage>

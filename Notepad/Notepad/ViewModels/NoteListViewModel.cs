@@ -62,7 +62,7 @@ namespace Notepad.ViewModels
 
         public async Task CreateAsync()
         {
-            string noteName = await displayService.PromptAsync("Nouvelle note", "Nom pour la note:");
+            string noteName = await displayService.PromptAsync("New note", "Name of the new note:");
             if (string.IsNullOrEmpty(noteName))
                 return;
 

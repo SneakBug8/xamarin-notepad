@@ -11,6 +11,12 @@ namespace Notepad.Services
             return await currentPage.DisplayAlert(title, message, accept, cancel);
         }
 
+        public async Task AlertAsync(string title, string message, string cancel)
+        {
+            Page currentPage = (Application.Current.MainPage as NavigationPage).CurrentPage;
+            await currentPage.DisplayAlert(title, message, cancel);
+        }
+
         public async Task<string> PromptAsync(string title, string message, string accept = "OK", string cancel = "Cancel", string placeholder = null, int maxLength = -1, Keyboard keyboard = null, string initialValue = "")
         {
             Page currentPage = (Application.Current.MainPage as NavigationPage).CurrentPage;

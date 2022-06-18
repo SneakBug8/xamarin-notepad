@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Notepad.Models;
+using Notepad.Services;
 using Xamarin.Forms;
 
 namespace Notepad.ViewModels
@@ -17,11 +19,29 @@ namespace Notepad.ViewModels
 
         public ICommand SaveCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
+        public ICommand DownloadCommand { get; set; }
+        public ICommand UploadCommand { get; set; }
+
+
 
         public NoteEditViewModel()
         {
             SaveCommand = new Command(async () => await SaveAsync());
             DeleteCommand = new Command(async () => await DeleteAsync());
+            DownloadCommand = new Command(async () => {
+                try
+                {
+                    Model._Content = await FtpService.Download(Model.Name);
+                }
+                catch
+                {
+                    
+                }
+             });
+
+            UploadCommand = new Command(async () => {
+                await FtpService.Upload(Model);
+            });
 
             messagingService.Subscribe<int>(this, LoadNote, async (id) => await LoadAsync(id));
         }

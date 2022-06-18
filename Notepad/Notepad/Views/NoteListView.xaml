@@ -32,7 +32,7 @@
 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Detail="{Binding Excerpt}" Text="{Binding Name}" />
+                    <TextCell Detail="{Binding Excerpt}" Text="{Binding Name}" DetailColor="Black"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

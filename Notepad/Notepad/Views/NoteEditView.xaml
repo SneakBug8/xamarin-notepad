@@ -11,7 +11,7 @@
     </ContentPage.BindingContext>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Sauvegarder" Command="{Binding SaveCommand}">
+        <ToolbarItem Text="Save" Command="{Binding SaveCommand}">
             <ToolbarItem.IconImageSource>
                 <FontImageSource
                     FontFamily="FA-R"
@@ -21,14 +21,23 @@
         </ToolbarItem>
         <ToolbarItem
             Order="Secondary"
-            Text="Supprimer"
+            Text="Delete"
             Command="{Binding DeleteCommand}" />
+        <ToolbarItem
+            Order="Secondary"
+            Text="Download"
+            Command="{Binding DownloadCommand}" />
+        <ToolbarItem
+            Order="Secondary"
+            Text="Upload"
+            Command="{Binding UploadCommand}" />
     </ContentPage.ToolbarItems>
 
     <StackLayout>
-        <Editor
-            Placeholder="Entrez votre note"
-            Text="{Binding Model.Content, Mode=TwoWay}"
+            <Editor
+                x:Name="NoteEditor"
+            Placeholder="Enter note text"
+            Text="{Binding Model._Content, Mode=TwoWay}" TextColor="Black" BackgroundColor="#ffffe0"
             VerticalOptions="FillAndExpand" />
     </StackLayout>
 </ContentPage>

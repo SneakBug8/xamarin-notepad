@@ -46,7 +46,7 @@ namespace Notepad.Services
                 {
                     Id = int.Parse(filename.Substring(0, index)),
                     Name = filename.Substring(index + 1),
-                    Content = File.ReadAllText(x)
+                    _Content = File.ReadAllText(x)
                 };
             });
         }
@@ -63,7 +63,7 @@ namespace Notepad.Services
             {
                 Id = id,
                 Name = fileName.Substring(fileName.IndexOf('-') + 1),
-                Content = File.ReadAllText(files[0]),
+                _Content = File.ReadAllText(files[0]),
             };
 
             return await Task.FromResult(model);
@@ -76,7 +76,7 @@ namespace Notepad.Services
 
             // File creation
             string filePath = Path.Combine(directory, $"{model.Id}-{model.Name}.txt");
-            File.WriteAllText(filePath, model.Content);
+            File.WriteAllText(filePath, model._Content);
 
             return await Task.FromResult(model);
         }
@@ -92,7 +92,7 @@ namespace Notepad.Services
 
             // File creation
             string filePath = Path.Combine(directory, $"{id}-{model.Name}.txt");
-            File.WriteAllText(filePath, model.Content);
+            File.WriteAllText(filePath, model._Content);
             model.Id = id;
 
             return await Task.FromResult(model);

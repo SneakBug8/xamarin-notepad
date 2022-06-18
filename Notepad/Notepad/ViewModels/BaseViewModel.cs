@@ -10,8 +10,8 @@ namespace Notepad.ViewModels
         protected const string NoteUpdated = "NoteUpdated";
         protected const string NoteDeleted = "NoteDeleted";
 
-        protected static readonly INoteService noteService = new SqlNoteService();
-        protected static readonly DisplayService displayService = new DisplayService();
+        public static readonly INoteService noteService = new SqlNoteService();
+        public static readonly DisplayService displayService = new DisplayService();
         protected static readonly MessagingService messagingService = new MessagingService();
         protected static readonly NavigationService navigationService = new NavigationService();
 
